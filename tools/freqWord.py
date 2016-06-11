@@ -19,7 +19,7 @@ class freqWord():
         self.threshold = threshold
 
         self.stoplist = ['，','，','…', '%', '', '，', '、', '“', '”', '：', '‘', '’', '(', ')', ',', '.', '，', '。',
-                         '\n', '《', '》', '[', ']', ' ', '，', '的', '，', '—', '一', '，','（','）']
+                         '\n', '《', '》', '[', ']',' ','，', '的', '，', '—', '，','（','）']
 
         if stopwordsFile:
             with open(stopwordsFile, encoding='utf8') as f:
@@ -59,8 +59,10 @@ class freqWord():
         return wfd, bfd
 
     def combine2words(self, data):
-        # data为bigram形式
-
+        '''
+        :param data:array-like,分好词的数组
+        :return:
+        '''
         wfd, bfd = self.word_bigram_fd(data)
         dict_candidate = defaultdict(list)
         dict_finished = defaultdict(list)

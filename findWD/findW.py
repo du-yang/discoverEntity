@@ -30,7 +30,7 @@ def get_array_data(file):
 
 def main():
     mymodel = Word2Vec.load('./model/model1_2_5')
-    freq = freqWord(6,0.1,stopwordsFile='../config/stopWords.txt')
+    freq = freqWord(6,0.0001,stopwordsFile='../config/stopWords.txt')
     data = get_array_data('../data/news_lines_splited.txt')[:5000]
     # for line in data:
     #     print(line)
@@ -50,6 +50,8 @@ def main():
                     print('cos:',cosDistance(mymodel[item[index]],mymodel[item[index+1]]))
                     print('euc:', eucDistance(mymodel[item[index]], mymodel[item[index + 1]]))
             print('完成第%s轮'%n)
+        for words in geted_words:
+            f.write(words[0]+' '+str(words[1])+'\n')
     with open('taged_new_words.txt') as f:
         total = [line.split()[0] for line in f if 'ner' in line]
 

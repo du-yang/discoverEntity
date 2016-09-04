@@ -1,5 +1,5 @@
-with open('news_lines.txt') as f:
+with open('news_lines_splited.txt') as f:
     for i,line in enumerate(f):
-        if i>50:
+        if i>5000:
             break
-        print(line.strip())
+        print(line.strip().split())

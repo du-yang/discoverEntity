@@ -56,11 +56,11 @@ class Prun():
 
 if __name__ == '__main__':
     with open('nerWords.txt') as f:
-        ner = [line.split()[0] for line in f if 'ner' in line]
+        ner = [line.split()[0] for line in f]
 
     mymodel = Word2Vec.load('./model/model1_2_5')
     pruned=Prun(mymodel)
-    for word in pruned.prun_euc(ner,10):
+    for word in pruned.prun_cos(ner,0.13):
         print(word)
 
                 
